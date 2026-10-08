@@ -15,7 +15,12 @@ class ConsoleApp:
        pass
  
    def handle_login(self):
-       pass
+    username = input("Username: ")
+    password = input("Password: ")
+    if self.twitter.login(username, password):
+        print(f"Welcome back, {username}!")
+    else:
+        print("Invalid username or password.")
  
    def handle_logout(self):
        pass

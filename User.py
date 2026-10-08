@@ -5,7 +5,7 @@ class User:
         self.password = password
 
     def check_password(self, password):
-        pass
+        return self.password == password
 
     def is_following(self, user_key):
         pass
