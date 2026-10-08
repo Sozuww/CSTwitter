@@ -1,7 +1,7 @@
 class User:
     def __init__(self, username, key, password):
-        self.username = username
-        self.key = key
+        self.username = username   # display name, keeps the original capitalization
+        self.key = key             # lowercase username, used as the unique ID
         self.password = password
 
     def check_password(self, password):
