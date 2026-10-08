@@ -7,7 +7,7 @@ class Twitter:
          self.next_tweet_id = 1
  
     def find_user(self, username):
-         pass
+         return self.users.get(username)
  
     def validate_username(self, username):
          pass
@@ -19,13 +19,19 @@ class Twitter:
          pass
  
     def login(self, username, password):
-         pass
- 
+     user = self.find_user(username)
+     if user is None:
+          return False
+     if not user.check_password(password):
+          return False
+     self.current_user = user
+     return True
+
     def logout(self):
-         pass
+          self.current_user = None
  
     def is_logged_in(self):
-         pass
+         return self.current_user is not None
  
     def parse_hashtags(self, text):
          pass
