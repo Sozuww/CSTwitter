@@ -5,6 +5,7 @@ class Tweet:
         self.text = text
         self.hashtags = hashtags
         self.timestamps = timestamps
+        self.likes = set()  # keys of users who liked this tweet
 
     def add_like(self, user_key):
         pass
@@ -14,9 +15,3 @@ class Tweet:
 
     def has_hashtag(self, tag):
         pass
-
-if __name__ == "__main__":
-    pass
-
-
-    

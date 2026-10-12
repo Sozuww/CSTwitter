@@ -1,20 +1,20 @@
-import User
+from User import User
+from Tweet import Tweet  # used later when posting tweets
 
 
 class Twitter:
-     
     def __init__(self):
-        self.users = {}  # lowercase username -> User object
+        self.users = {}           # lowercase username -> User object
         self.all_tweets = []
-        self.current_user = None
+        self.current_user = None  # whoever is logged in (None = nobody)
         self.next_tweet_id = 1
 
- # Looks up a user by name. Lowercase so "Kai" and "kai" match.
+    # Looks up a user by name. Lowercase so "Kai" and "kai" match.
     # Returns the User, or None if not found.
     def find_user(self, username):
         return self.users.get(username.lower())
- 
-# Checks a username. Returns an error message, or None if it's fine.
+
+    # Checks a username. Returns an error message, or None if it's fine.
     def validate_username(self, username):
         if username == "":
             return "Username cannot be empty."
@@ -27,7 +27,7 @@ class Twitter:
         if self.find_user(username) is not None:
             return "That username is taken."
         return None  # no problems
- 
+
     # Checks a password. Returns an error message, or None if it's fine.
     def validate_password(self, password):
         if password == "":
@@ -55,43 +55,47 @@ class Twitter:
         key = username.lower()
         self.users[key] = User(username, key, password)
         return True, "Account created!"
- 
-    def login(self, username, password):
-     user = self.find_user(username)
-     if user is None:
-          return False
-     if not user.check_password(password):
-          return False
-     self.current_user = user
-     return True
 
+    # Logs a user in if the username exists and the password matches.
+    # Returns True if it worked, False if not.
+    def login(self, username, password):
+        user = self.find_user(username)
+        if user is None:
+            return False
+        if not user.check_password(password):
+            return False
+        self.current_user = user
+        return True
+
+    # Logs out by forgetting who the current user is.
+    # The User object is NOT deleted, so their data is still there next login.
     def logout(self):
-          self.current_user = None
- 
+        self.current_user = None
+
+    # True if someone is logged in right now
     def is_logged_in(self):
-         return self.current_user is not None
- 
+        return self.current_user is not None
+
     def parse_hashtags(self, text):
-         pass
- 
+        pass
+
     def post_tweet(self, text):
-         pass
- 
+        pass
+
     def like_tweet(self, tweet):
-         pass
- 
+        pass
+
     def follow(self, username):
-         pass
- 
+        pass
+
     def unfollow(self, username):
-         pass
- 
+        pass
+
     def get_feed(self):
-         pass
- 
+        pass
+
     def get_friend_posts(self, username):
-         pass
- 
+        pass
+
     def search_hashtag(self, tag):
-         pass
- 
+        pass
